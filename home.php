@@ -1,9 +1,7 @@
 <?php
 	include 'config/koneksi.php';
 	if(isset($_POST['submit']))
-    {    
-
-    	// print_r('<script>alert("Hello");</script>');
+    {        	
         $username = $conn->real_escape_string(htmlentities(htmlspecialchars($_POST['username'], ENT_QUOTES)));
         $userpass = $conn->real_escape_string(htmlspecialchars($_POST['password'], ENT_QUOTES));
         $sql = "SELECT * FROM t_user WHERE username='$username'";
@@ -21,23 +19,25 @@
             {                    
                 if($level == 'admin');
                 {
-                    $_SESSION['id_user'] = $row['id_user'];
+                    $_SESSION['id'] = $row['id'];
                     $_SESSION['username'] = $row['username'];
                     $_SESSION['email'] = $row['email'];
+                    $_SESSION['nama'] = $row['nama'];
                     $_SESSION['level'] = $row['level'];                        
                     echo '<script language="javascript">
                           window.alert("Login Berhasil");                  
                           window.location.href="apps/index.php";
                         </script>';
                 }
-                if($level == 'humas')
+                if($level == 'sekretaris');
                 {
                     $_SESSION['id_user'] = $row['id_user'];
                     $_SESSION['username'] = $row['username'];
                     $_SESSION['email'] = $row['email'];
+                    $_SESSION['nama'] = $row['nama'];
                     $_SESSION['level'] = $row['level'];                        
                     echo '<script language="javascript">
-                          window.alert("Login Berhasil");
+                          window.alert("Login Berhasil");                  
                           window.location.href="apps/index.php";
                         </script>';
                 }         

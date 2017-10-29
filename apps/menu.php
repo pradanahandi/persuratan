@@ -5,7 +5,7 @@
 		<a href="javascript:void(0);" id="show-shortcut" data-action="toggleShortcut">
 			<img src="../assets/img/avatars/sunny.png" alt="me" class="online" /> 
 			<span>
-				<?php echo $_SESSION['email'];?> 
+				<?php echo $_SESSION['nama'];?> 
 			</span>
 			<i class="fa fa-angle-down"></i>
 		</a> 
@@ -15,11 +15,10 @@
 <!-- end user info -->
 
 <!-- NAVIGATION : This navigation is also responsive-->
-<nav>	
-	<?php
-		if($_SESSION['username'] == 'admin')
-			{
-		?>
+<?php
+	if($_SESSION['username'] == 'admin'):    
+?>
+<nav>		
 	<ul>
 		<li class="active">
 			<a href="index.html" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Dashboard</span></a>
@@ -69,13 +68,13 @@
 			</ul>
 		</li>
 
-	</ul>
-	<?php } ?>
-	<?php
-		if($_SESSION['username'] == 'sekretaris')
-		{
-	?>	
-	<ul>	
+	</ul>	
+</nav>
+<?php 
+	else:
+?>
+<nav>		
+	<ul>
 		<li class="active">
 			<a href="index.html" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Dashboard</span></a>
 		</li>					
@@ -112,9 +111,9 @@
 				</li>				
 			</ul>
 		</li>		
-	</ul>
-	<?php } ?>
+	</ul>	
 </nav>
+<?php endif; ?>
 <span class="minifyme" data-action="minifyMenu"> 
 	<i class="fa fa-arrow-circle-left hit"></i> 
 </span>

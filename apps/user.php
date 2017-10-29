@@ -28,6 +28,7 @@
 									<th>Username</th>
 									<th>Email</th>
 									<th>Password</th>
+									<th>Nama Lengkap</th>
 									<th>Level</th>
 									<th>Action</th>
 								</tr>
@@ -44,6 +45,7 @@
 									<td><?php echo $row['username'];?></td>
 									<td><?php echo $row['email'];?></td>
 									<td><?php echo $row['password'];?></td>
+									<td><?php echo $row['nama'];?></td>
 									<td><?php echo $row['level'];?></td>
 									<td style="text-align: center;"><a href="?page=edit_user&id=<?php echo $row['id'];?>"><img width="20px" src="../assets/img/icon/edit.png"></a><span><a id="hapus" href="?page=delete_user&id=<?php echo $row['id'];?>"><img width="20px" src="../assets/img/icon/delete.png"></span></td>
 								</tr>								

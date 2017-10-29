@@ -14,6 +14,7 @@
 	    $username = $conn->real_escape_string(htmlentities(htmlspecialchars($_POST['username'], ENT_QUOTES)));
 	    $email = $conn->real_escape_string(htmlentities(htmlspecialchars($_POST['email'], ENT_QUOTES)));
 	    $password = $conn->real_escape_string(htmlentities(htmlspecialchars(password_hash($_POST['password'], PASSWORD_BCRYPT, $options))));
+	    $nama = $conn->real_escape_string(htmlentities(htmlspecialchars($_POST['nama'], ENT_QUOTES)));
 	    $level = $conn->real_escape_string(htmlentities(htmlspecialchars($_POST['level'], ENT_QUOTES)));
 	    
 	    $query = $conn->query("UPDATE t_user set username='$username', email='$email', password='$password', level='$level' WHERE id='$id'");
@@ -66,6 +67,11 @@
 									<label class="input"> <i class="icon-append fa fa-lock"></i>
 										<input type="password" name="password" value="<?php echo $row['password'];?>" id="password">
 										<b class="tooltip tooltip-bottom-right">Don't forget your password</b> </label>
+								</section>
+								<section>
+									<label class="input"> <i class="icon-append fa fa-lock"></i>
+										<input type="text" name="nama" value="<?php echo $row['nama'];?>" id="nama">
+										<b class="tooltip tooltip-bottom-right">Don't forget your name</b> </label>
 								</section>
 							</fieldset>
 							<fieldset>

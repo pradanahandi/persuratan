@@ -8,6 +8,7 @@
 	    $username = $conn->real_escape_string(htmlentities(htmlspecialchars($_POST['username'], ENT_QUOTES)));
 	    $email = $conn->real_escape_string(htmlentities(htmlspecialchars($_POST['email'], ENT_QUOTES)));
 	    $password = $conn->real_escape_string(htmlentities(htmlspecialchars(password_hash($_POST['password'], PASSWORD_BCRYPT, $options))));
+	    $nama = $conn->real_escape_string(htmlentities(htmlspecialchars($_POST['nama'], ENT_QUOTES)));
 	    $level = $conn->real_escape_string(htmlentities(htmlspecialchars($_POST['level'], ENT_QUOTES)));
 	    
 	    $cek = $conn->query("SELECT * FROM t_user WHERE username='$username' and email='$email' ORDER BY id");
@@ -17,7 +18,7 @@
 	    }
 	    else
 	    {
-	    	$query = $conn->query("INSERT INTO t_user VALUES('','$username','$email','$password','$level')");
+	    	$query = $conn->query("INSERT INTO t_user VALUES('','$username','$email','$password','$nama','$level')");
 	    	print_r('<script>alert("Data Berhasil di Input!");
 			                window.location.href="?page=user";
 			      </script>');
@@ -56,6 +57,12 @@
 									<label class="input"> <i class="icon-append fa fa-lock"></i>
 										<input type="password" name="password" placeholder="Password" id="password">
 										<b class="tooltip tooltip-bottom-right">Don't forget your password</b> </label>
+								</section>
+
+								<section>
+									<label class="input"> <i class="icon-append fa fa-users"></i>
+										<input type="text" name="nama" placeholder="Nama Lengkap" id="nama">
+										<b class="tooltip tooltip-bottom-right">Don't forget your name</b> </label>
 								</section>
 							</fieldset>
 							<fieldset>
