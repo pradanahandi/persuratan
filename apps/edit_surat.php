@@ -1,57 +1,23 @@
 <?php
 	include '../config/koneksi.php';
-	ini_set('display_errors', 0);
+	ini_set('display_errors', 1);
   	ini_set('display_startup_errors', 1);
   	error_reporting(E_ALL);
 
-  	$cek = $conn->query("SELECT IFNULL(MAX(`no_s`)+1,1) AS `no_s` FROM `t_surat_keluar_new` WHERE DATE_FORMAT(`tanggal_post`,'%Y%m')=DATE_FORMAT(NOW(),'%Y%m')");	
-	$result = $cek->fetch_array();
-	
-	if($x = $result['no_s'])
-	{
-		$x = $x;
-	}	
-	else
-	{
-		$x = $x+1;
-	}
+  	$id = $conn->real_escape_string(htmlentities(htmlspecialchars($_GET['id'], ENT_QUOTES)));
+	$res = $conn->query("SELECT * FROM t_surat_keluar WHERE id='$id'");
+	$row = $res->fetch_assoc();
 
-	
-	$a = date('d');
-	$b = 'SC';
-	$c = array('','I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII');
-	$d = date('Y');
-	
-	$nosurat = sprintf('%s/%03d.%s/%s/%d', $b, $x, $a, $c[date('n')], $d);
-	// $no_surat = $b.'/'.$a.'.'.date('d').'/'.$c[date('n')].'/'.$d;
-	// $no_surat = sprintf( '%s/%02d/%s/%s/%04d' , $b,$a, $romawi[$c] , $d );
-
-	$no = 1;
-	$tanggal = 31;
-	$tahun = 2012;
-	$bulan = 8;
-	$romawi = array('','I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII');
-	//$surat = 2;
-	$tipesurat = "SC";
-
-	// echo sprintf( '%03d/%s/%s/%04d' , $no , $tipesurat[$surat] , $romawi[$bulan] , $tahun );
-
-	// $tahun = 12;
-
-	$coba = sprintf( '%02d/%s/%s/%s/%04d' , $no ,$tanggal , $tipesurat , $romawi[$bulan] , $tahun );
-	//echo 
-
-	echo $coba;
 
 	if(isset($_POST['simpan']))
-	{	
+	{					
 		$ekstensi = array('jpg','jpeg','png','JPG','PNG','JPEG','pdf','PDF');
     	$maxsize = 104407000;
+    	$id = $conn->real_escape_string(htmlentities(htmlspecialchars($_POST['id'], ENT_QUOTES)));
     	$id_user = $conn->real_escape_string(htmlentities(htmlspecialchars($_POST['id_user'], ENT_QUOTES)));
     	$tanggal_surat = $conn->real_escape_string(strtotime($_POST['tanggal_surat']));
     	$tanggal_surat = date("Y-m-d", $tanggal_surat);
-    	$no_s = $conn->real_escape_string(htmlentities(htmlspecialchars($_POST['no_s'], ENT_QUOTES)));
-    	$nosurat = $conn->real_escape_string(htmlentities(htmlspecialchars($_POST['nosurat'], ENT_QUOTES)));
+    	$no_surat = $conn->real_escape_string(htmlentities(htmlspecialchars($_POST['no_surat'], ENT_QUOTES)));
     	$untuk = $conn->real_escape_string(htmlentities(htmlspecialchars($_POST['untuk'], ENT_QUOTES)));
     	$perihal = $conn->real_escape_string(htmlentities(htmlspecialchars($_POST['perihal'], ENT_QUOTES)));
     	$asal_surat = $conn->real_escape_string(htmlentities(htmlspecialchars($_POST['asal_surat'], ENT_QUOTES)));
@@ -66,16 +32,20 @@
 		if(in_array($eks, $ekstensi))
 		{
 			if($ukuran < $maxsize)
-        	{
+        	{        	        		
         		move_uploaded_file($_FILES['file']['tmp_name'], '../assets/doc/'.$_FILES['file']['name']);
-        		$sql = "INSERT INTO t_surat_keluar_new VALUES('','$id_user','$tanggal_surat','no_s','$nosurat','$untuk','$perihal','$asal_surat','$keterangan','$file','$tanggal_post')";
-        		$query = $conn->query($sql) or die($conn->error);
-        		if($query)
-        		{
-        			print_r('<script>alert("Data Berhasil di Input!");
-                                 window.location.href="?page=surat";
-                          </script>');
-        		}
+        		// UPDATE t_user set username='$username', email='$email', password='$password', level='$level' WHERE id='$id'
+        		$sql = "UPDATE t_surat_keluar set id_user='$id_user', no_surat='$no_surat', untuk='$untuk', perihal='$perihal', asal_surat='$asal_surat', keterangan='$keterangan', file='$file', tanggal_post='$tanggal_post' WHERE id='$id'";
+        		print_r($sql);        		
+        		// move_uploaded_file($_FILES['file']['tmp_name'], '../assets/doc/'.$_FILES['file']['name']);
+        		// $sql = "INSERT INTO t_surat_keluar VALUES('','$id_user','$tanggal_surat','$no_surat','$untuk','$perihal','$asal_surat','$keterangan','$file','$tanggal_post')";
+        		// $query = $conn->query($sql) or die($conn->error);
+        		// if($query)
+        		// {
+        		// 	print_r('<script>alert("Data Berhasil di Input!");
+          //                        window.location.href="?page=surat";
+          //                 </script>');
+        		// }
         	}        	
 		}
 	}
@@ -97,43 +67,43 @@
 								Tambah Surat Keluar
 							</header>							
 							<fieldset>
+								<section hidden="">
+									<label class="input" > <i class="icon-append fa fa-user"></i>
+										<input type="text" readonly="" hidden="" name="id" value="<?php echo $row['id'];?>">										
+									</label>
+								</section>
 								<section>
 									<label class="input"> <i class="icon-append fa fa-calendar"></i>
-										<input type="text" name="tanggal_surat" placeholder="Tanggal Surat" id="datepicker" class="datepicker" autocomplete="Off">
+										<input type="text" name="tanggal_surat" placeholder="Tanggal Surat" id="datepicker" class="datepicker" autocomplete="Off" value="<?php echo $row['tanggal_surat'];?>">
 										<b class="tooltip tooltip-bottom-right">Masukan Tanggal Surat</b> </label>
-								</section>
-								<section hidden="">
-									<label class="input"> <i class="icon-append fa fa-envelope-o"></i>
-										<input readonly="" type="text" name="no_s" placeholder="No Surat" value="<?php echo $x;?>">
-										<b class="tooltip tooltip-bottom-right">Masukan No Surat</b> </label>
 								</section>
 								<section>
 									<label class="input"> <i class="icon-append fa fa-envelope-o"></i>
-										<input type="text" name="nosurat" placeholder="No Surat" value="<?php echo $nosurat;?>">
+										<input type="text" name="no_surat" placeholder="No Surat" value="<?php echo $row['no_surat'];?>">
 										<b class="tooltip tooltip-bottom-right">Masukan No Surat</b> </label>
 								</section>
 
 								<section>
 									<label class="input"> <i class="icon-append fa fa-envelope-o"></i>
-										<input type="text" name="untuk" placeholder="Ditujukan untuk">
+										<input type="text" name="untuk" placeholder="Ditujukan untuk" value="<?php echo $row['untuk'];?>">
 										<b class="tooltip tooltip-bottom-right">Ditujukan untuk</b> </label>
 								</section>
 
 								<section>
 									<label class="input"> <i class="icon-append fa fa-envelope-o"></i>
-										<input type="text" name="perihal" placeholder="Perihal Surat">
+										<input type="text" name="perihal" placeholder="Perihal Surat" value="<?php echo $row['perihal'];?>">
 										<b class="tooltip tooltip-bottom-right">Perihal Surat</b> </label>
 								</section>								
 
 								<section>
 									<label class="input"> <i class="icon-append fa fa-envelope-o"></i>
-										<input type="text" name="asal_surat" placeholder="Asal Surat">
+										<input type="text" name="asal_surat" placeholder="Asal Surat" value="<?php echo $row['asal_surat'];?>">
 										<b class="tooltip tooltip-bottom-right">Asal Surat</b> </label>
 								</section>
 
 								<section>
 									<label class="input"> <i class="icon-append fa fa-lock"></i>
-										<input type="text" name="keterangan" placeholder="Keterangan" id="keterangan">
+										<input type="text" name="keterangan" placeholder="Keterangan" id="keterangan" value="<?php echo $row['keterangan'];?>">
 										<b class="tooltip tooltip-bottom-right">Untuk keterangan</b> </label>
 								</section>								
 							</fieldset>
@@ -165,7 +135,7 @@
 								</section>								
 							</fieldset>
 							<footer>
-								<input type="submit" name="simpan" class="btn btn-primary" value="Tambah Surat">
+								<input type="submit" name="simpan" class="btn btn-primary" value="Update Surat">
 							</footer>
 						</form>					
 					</div>							

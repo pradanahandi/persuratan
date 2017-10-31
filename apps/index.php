@@ -368,7 +368,7 @@
 			    $( "#datepicker" ).datepicker();
 			  } );
 	  	</script>
-		<script type="text/javascript">		
+		<!-- <script type="text/javascript">		
 			// DO NOT REMOVE : GLOBAL FUNCTIONS!			
 			$(document).ready(function() {				
 				pageSetUp();
@@ -784,7 +784,7 @@
 				});
 				
 				$('#finishdate').datepicker({
-					dateFormat : 'dd.mm.yy',
+					dateFormat : 'd/m/Y',
 					prevText : '<i class="fa fa-chevron-left"></i>',
 					nextText : '<i class="fa fa-chevron-right"></i>',
 					onSelect : function(selectedDate) {
@@ -793,7 +793,7 @@
 				});
 			
 			})
-		</script>
+		</script> -->
 		<!--EndForm-->
 
 		<!--End Calendar-->
