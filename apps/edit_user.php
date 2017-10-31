@@ -94,7 +94,7 @@
 													}?> value="sekretaris">Sekretaris</option>
 												<option <?php if($row['level'] =='magang' )
 														{
-															echo "magang";
+															echo "selected";
 
 													}?> value="magang">Magang</option>
 											</select> <i></i> </label>

@@ -16,7 +16,8 @@
 
 <!-- NAVIGATION : This navigation is also responsive-->
 <?php
-	if($_SESSION['username'] == 'admin'):    
+	if($_SESSION['level'] == 'admin')
+	{
 ?>
 <nav>		
 	<ul>
@@ -24,13 +25,13 @@
 			<a href="index.html" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Dashboard</span></a>
 		</li>					
 		<li>
-			<a href="#"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">Surat Masuk</span></a>
+			<a href="#"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">Surat Keluar</span></a>
 			<ul>
 				<li>
-					<a href="flot.html">Input Surat</a>
+					<a href="?page=tambah_surat">Input Surat</a>
 				</li>
 				<li>
-					<a href="?page=Surat">View Surat</a>
+					<a href="?page=surat">View Surat</a>
 				</li>				
 			</ul>
 		</li>
@@ -71,7 +72,9 @@
 	</ul>	
 </nav>
 <?php 
-	else:
+	}
+	if($_SESSION['level'] == 'sekretaris')
+	{
 ?>
 <nav>		
 	<ul>
@@ -82,7 +85,7 @@
 			<a href="#"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">Surat Masuk</span></a>
 			<ul>
 				<li>
-					<a href="flot.html">Input Surat</a>
+					<a href="?page=tambah_surat">Input Surat</a>
 				</li>
 				<li>
 					<a href="?page=Surat">View Surat</a>
@@ -113,7 +116,52 @@
 		</li>		
 	</ul>	
 </nav>
-<?php endif; ?>
+<?php 
+	} 
+	if($_SESSION['level'] == 'magang')
+	{
+?>
+<nav>		
+	<ul>
+		<li class="active">
+			<a href="index.html" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Dashboard</span></a>
+		</li>					
+		<li>
+			<a href="#"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">Surat Masuk</span></a>
+			<ul>
+				<li>
+					<a href="?page=tambah_surat">Input Surat</a>
+				</li>
+				<li>
+					<a href="?page=Surat">View Surat</a>
+				</li>				
+			</ul>
+		</li>
+		<li>
+			<a href="#"><i class="fa fa-lg fa-fw fa-table"></i> <span class="menu-item-parent">MoU</span></a>
+			<ul>
+				<li>
+					<a href="table.html">Input MoU</a>
+				</li>				
+				<li>
+					<a href="?page=mou">View MoU</a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="#"><i class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span class="menu-item-parent">MoA</span></a>
+			<ul>
+				<li>
+					<a href="form-elements.html">Input MoA</a>
+				</li>
+				<li>
+					<a href="?page=moa">View MoA</a>
+				</li>				
+			</ul>
+		</li>		
+	</ul>	
+</nav>
+<?php } ?>
 <span class="minifyme" data-action="minifyMenu"> 
 	<i class="fa fa-arrow-circle-left hit"></i> 
 </span>

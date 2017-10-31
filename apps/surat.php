@@ -29,7 +29,7 @@
 								<?php
 									$id = 1;
 									include '../config/koneksi.php';
-									$query = $conn->query("SELECT * FROM t_surat_keluar INNER JOIN t_user on t_surat_keluar.id_user=t_user.id");
+									$query = $conn->query("SELECT * FROM t_surat_keluar INNER JOIN t_user on t_surat_keluar.id_user=t_user.id WHERE level='admin'");
 									while ($row = $query->fetch_assoc()) {
 								?>							
 								<tr>

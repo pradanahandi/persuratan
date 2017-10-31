@@ -57,15 +57,13 @@
 	</head>
 	
 	<body class="animated fadeInDown">
+		<header id="header" style="background: #fff!important;">
 
-		<header id="header">
-
-			<div id="logo-group">
+			<!-- <div id="logo-group">
 				<span id="logo"></span>
-			</div>			
+			</div>			 -->
 
 		</header>
-
 		<div id="main" role="main">
 
 			<!-- MAIN CONTENT -->
@@ -78,10 +76,8 @@
 	                }else{
 	                    include("home.php");
 	                }               
-
 				?>				
 			</div>
-
 		</div>
 
 		<!--================================================== -->	

@@ -56,7 +56,6 @@
 
 	</head>	
 	<body class="">
-		
 		<header id="header">
 			<div id="logo-group">
 				<span id="logo"> <img src="../assets/img/logo.png" alt="SmartAdmin"> </span>
@@ -70,45 +69,17 @@
 					<li class="">
 						<a href="#" class="dropdown-toggle no-margin userdropdown" data-toggle="dropdown"> 
 							<img src="../assets/img/avatars/sunny.png" alt="John Doe" class="online" />  
-						</a>
-						<ul class="dropdown-menu pull-right">
-							<li>
-								<a href="javascript:void(0);" class="padding-10 padding-top-0 padding-bottom-0"><i class="fa fa-cog"></i> Setting</a>
-							</li>
-							<li class="divider"></li>
-							<li>
-								<a href="profile.html" class="padding-10 padding-top-0 padding-bottom-0"> <i class="fa fa-user"></i> <u>P</u>rofile</a>
-							</li>
-							<li class="divider"></li>
-							<li>
-								<a href="javascript:void(0);" class="padding-10 padding-top-0 padding-bottom-0" data-action="toggleShortcut"><i class="fa fa-arrow-down"></i> <u>S</u>hortcut</a>
-							</li>
-							<li class="divider"></li>
-							<li>
-								<a href="javascript:void(0);" class="padding-10 padding-top-0 padding-bottom-0" data-action="launchFullscreen"><i class="fa fa-arrows-alt"></i> Full <u>S</u>creen</a>
-							</li>
-							<li class="divider"></li>
-							<li>
-								<a href="../index.php" class="padding-10 padding-top-5 padding-bottom-5" data-action="userLogout"><i class="fa fa-sign-out fa-lg"></i> <strong><u>L</u>ogout</strong></a>
-							</li>
-						</ul>
+						</a>						
 					</li>
-				</ul>
-
-				<!-- logout button -->
+				</ul>				
 				<div id="logout" class="btn-header transparent pull-right">
 					<span> <a href="logout.php" title="Sign Out" data-action="userLogout" data-logout-msg="Apakah yakin akan keluar?"><i class="fa fa-sign-out"></i></a> </span>
-				</div>
-				<!-- end logout button -->
-
+				</div>				
 			</div>			
 		</header>		
 		<aside id="left-panel">
 			<?php include 'menu.php';?>			
-		</aside>
-		<!-- END NAVIGATION -->
-
-		<!-- MAIN PANEL -->
+		</aside>				
 		<div id="main" role="main">
 
 			<!-- RIBBON -->
@@ -144,37 +115,7 @@
 		<div class="page-footer">
 			<?php include 'footer.php';?>
 		</div>
-		<!-- END PAGE FOOTER -->
-
-		<!-- SHORTCUT AREA : With large tiles (activated via clicking user name tag)
-		Note: These tiles are completely responsive,
-		you can add as many as you like
-		-->
-		<!-- <div id="shortcut">
-			<ul>
-				<li>
-					<a href="inbox.html" class="jarvismetro-tile big-cubes bg-color-blue"> <span class="iconbox"> <i class="fa fa-envelope fa-4x"></i> <span>Mail <span class="label pull-right bg-color-darken">14</span></span> </span> </a>
-				</li>
-				<li>
-					<a href="calendar.html" class="jarvismetro-tile big-cubes bg-color-orangeDark"> <span class="iconbox"> <i class="fa fa-calendar fa-4x"></i> <span>Calendar</span> </span> </a>
-				</li>
-				<li>
-					<a href="gmap-xml.html" class="jarvismetro-tile big-cubes bg-color-purple"> <span class="iconbox"> <i class="fa fa-map-marker fa-4x"></i> <span>Maps</span> </span> </a>
-				</li>
-				<li>
-					<a href="invoice.html" class="jarvismetro-tile big-cubes bg-color-blueDark"> <span class="iconbox"> <i class="fa fa-book fa-4x"></i> <span>Invoice <span class="label pull-right bg-color-darken">99</span></span> </span> </a>
-				</li>
-				<li>
-					<a href="gallery.html" class="jarvismetro-tile big-cubes bg-color-greenLight"> <span class="iconbox"> <i class="fa fa-picture-o fa-4x"></i> <span>Gallery </span> </span> </a>
-				</li>
-				<li>
-					<a href="profile.html" class="jarvismetro-tile big-cubes selected bg-color-pinkDark"> <span class="iconbox"> <i class="fa fa-user fa-4x"></i> <span>My Profile </span> </span> </a>
-				</li>
-			</ul>
-		</div> -->
-		<!-- END SHORTCUT AREA -->
-
-		<!--================================================== -->
+		<!-- END PAGE FOOTER -->		
 
 		<!-- PACE LOADER - turn this on if you want ajax loading to show (caution: uses lots of memory on iDevices)-->
 		<script data-pace-options='{ "restartOnRequestAfter": true }' src="../assets/js/plugin/pace/pace.min.js"></script>
@@ -280,28 +221,9 @@
 
 		<!--DataTable-->
 		<script type="text/javascript">
-		
-			// DO NOT REMOVE : GLOBAL FUNCTIONS!
-			
 			$(document).ready(function() {
 				
-				pageSetUp();
-				
-				/* // DOM Position key index //
-			
-				l - Length changing (dropdown)
-				f - Filtering input (search)
-				t - The Table! (datatable)
-				i - Information (records)
-				p - Pagination (paging)
-				r - pRocessing 
-				< and > - div elements
-				<"#id" and > - div with an id
-				<"class" and > - div with a class
-				<"#id.class" and > - div with an id and class
-				
-				Also see: http://legacy.datatables.net/usage/features
-				*/	
+				pageSetUp();				
 		
 				/* BASIC ;*/
 					var responsiveHelper_dt_basic = undefined;
@@ -336,13 +258,7 @@
 				/* END BASIC */
 				
 				/* COLUMN FILTER  */
-			    var otable = $('#datatable_fixed_column').DataTable({
-			    	//"bFilter": false,
-			    	//"bInfo": false,
-			    	//"bLengthChange": false
-			    	//"bAutoWidth": false,
-			    	//"bPaginate": false,
-			    	//"bStateSave": true // saves sort state using localStorage
+			    var otable = $('#datatable_fixed_column').DataTable({			    	
 					"sDom": "<'dt-toolbar'<'col-xs-12 col-sm-6 hidden-xs'f><'col-sm-6 col-xs-12 hidden-xs'<'toolbar'>>r>"+
 							"t"+
 							"<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
@@ -446,6 +362,12 @@
 		<!--EndDataTable-->
 
 		<!--Form-->
+
+		<script>
+			  $( function() {
+			    $( "#datepicker" ).datepicker();
+			  } );
+	  	</script>
 		<script type="text/javascript">		
 			// DO NOT REMOVE : GLOBAL FUNCTIONS!			
 			$(document).ready(function() {				
@@ -853,7 +775,7 @@
 		
 				// START AND FINISH DATE
 				$('#startdate').datepicker({
-					dateFormat : 'dd.mm.yy',
+					dateFormat : 'd/m/Y',
 					prevText : '<i class="fa fa-chevron-left"></i>',
 					nextText : '<i class="fa fa-chevron-right"></i>',
 					onSelect : function(selectedDate) {
