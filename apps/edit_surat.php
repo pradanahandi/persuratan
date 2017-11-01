@@ -5,7 +5,7 @@
   	error_reporting(E_ALL);
 
   	$id = $conn->real_escape_string(htmlentities(htmlspecialchars($_GET['id'], ENT_QUOTES)));
-	$res = $conn->query("SELECT * FROM t_surat_keluar WHERE id='$id'");
+	$res = $conn->query("SELECT * FROM t_surat_keluar INNER JOIN t_user ON t_surat_keluar.id_user=t_user.id_user WHERE t_surat_keluar.id='$id' ORDER BY t_surat_keluar.id");
 	$row = $res->fetch_assoc();
 
 
@@ -13,11 +13,12 @@
 	{					
 		$ekstensi = array('jpg','jpeg','png','JPG','PNG','JPEG','pdf','PDF');
     	$maxsize = 104407000;
-    	$id = $conn->real_escape_string(htmlentities(htmlspecialchars($_POST['id'], ENT_QUOTES)));
+    	$id = $conn->real_escape_string(htmlentities(htmlspecialchars($_POST['id'], ENT_QUOTES)));    
     	$id_user = $conn->real_escape_string(htmlentities(htmlspecialchars($_POST['id_user'], ENT_QUOTES)));
     	$tanggal_surat = $conn->real_escape_string(strtotime($_POST['tanggal_surat']));
     	$tanggal_surat = date("Y-m-d", $tanggal_surat);
-    	$no_surat = $conn->real_escape_string(htmlentities(htmlspecialchars($_POST['no_surat'], ENT_QUOTES)));
+    	$no_s = $conn->real_escape_string(htmlentities(htmlspecialchars($_POST['no_s'], ENT_QUOTES)));
+    	$nosurat = $conn->real_escape_string(htmlentities(htmlspecialchars($_POST['nosurat'], ENT_QUOTES)));
     	$untuk = $conn->real_escape_string(htmlentities(htmlspecialchars($_POST['untuk'], ENT_QUOTES)));
     	$perihal = $conn->real_escape_string(htmlentities(htmlspecialchars($_POST['perihal'], ENT_QUOTES)));
     	$asal_surat = $conn->real_escape_string(htmlentities(htmlspecialchars($_POST['asal_surat'], ENT_QUOTES)));
@@ -29,25 +30,42 @@
 	    $ukuran = $conn->real_escape_string($_FILES['file']['size']);
 		$tanggal_post = date("Y-m-d H:i:s");
 
-		if(in_array($eks, $ekstensi))
+
+		if(empty($file))
 		{
-			if($ukuran < $maxsize)
-        	{        	        		
-        		move_uploaded_file($_FILES['file']['tmp_name'], '../assets/doc/'.$_FILES['file']['name']);
-        		// UPDATE t_user set username='$username', email='$email', password='$password', level='$level' WHERE id='$id'
-        		$sql = "UPDATE t_surat_keluar set id_user='$id_user', no_surat='$no_surat', untuk='$untuk', perihal='$perihal', asal_surat='$asal_surat', keterangan='$keterangan', file='$file', tanggal_post='$tanggal_post' WHERE id='$id'";
-        		print_r($sql);        		
-        		// move_uploaded_file($_FILES['file']['tmp_name'], '../assets/doc/'.$_FILES['file']['name']);
-        		// $sql = "INSERT INTO t_surat_keluar VALUES('','$id_user','$tanggal_surat','$no_surat','$untuk','$perihal','$asal_surat','$keterangan','$file','$tanggal_post')";
-        		// $query = $conn->query($sql) or die($conn->error);
-        		// if($query)
-        		// {
-        		// 	print_r('<script>alert("Data Berhasil di Input!");
-          //                        window.location.href="?page=surat";
-          //                 </script>');
-        		// }
-        	}        	
+			$sql = "UPDATE t_surat_keluar set id_user='$id_user', no_s='$no_s',nosurat='$nosurat', untuk='$untuk', perihal='$perihal', asal_surat='$asal_surat', keterangan='$keterangan', tanggal_post='$tanggal_post' WHERE id='$id'";	
+			$query = $conn->query($sql) or die();
+			if($query)
+    		{
+    			print_r('<script>alert("Data Berhasil di Update!");
+                             window.location.href="?page=surat";
+                      </script>');
+    		}
+    		else    		
+    		{
+    			print_r('<script>alert("Data Gagal di Update!");
+                             window.location.href="?page=surat";
+                      </script>');
+    		}
 		}
+		elseif (!empty($file))
+		{
+			if(in_array($eks, $ekstensi))
+			{
+				if($ukuran < $maxsize)
+	        	{   
+	        		move_uploaded_file($_FILES['file']['tmp_name'], '../assets/doc/'.$_FILES['file']['name']);
+		        		$sql = "UPDATE t_surat_keluar set id_user='$id_user', no_s='$no_s', nosurat='$nosurat', untuk='$untuk', perihal='$perihal', asal_surat='$asal_surat', keterangan='$keterangan', file='$file', tanggal_post='$tanggal_post' WHERE id='$id'" or die();
+		        		$query = $conn->query($sql) or die($conn->error);
+		        		if($query)
+		        		{
+		        			print_r('<script>alert("Data Berhasil di Input!");
+		                                 window.location.href="?page=surat";
+		                          </script>');
+		        		}
+	        	}        	
+			}
+		}	
 	}
 ?>
 <section id="widget-grid" class="">
@@ -79,7 +97,12 @@
 								</section>
 								<section>
 									<label class="input"> <i class="icon-append fa fa-envelope-o"></i>
-										<input type="text" name="no_surat" placeholder="No Surat" value="<?php echo $row['no_surat'];?>">
+										<input type="text" name="no_s" placeholder="No Surat" value="<?php echo $row['no_s'];?>">
+										<b class="tooltip tooltip-bottom-right">Masukan No Surat</b> </label>
+								</section>
+								<section>
+									<label class="input"> <i class="icon-append fa fa-envelope-o"></i>
+										<input type="text" name="nosurat" placeholder="No Surat" value="<?php echo $row['nosurat'];?>">
 										<b class="tooltip tooltip-bottom-right">Masukan No Surat</b> </label>
 								</section>
 

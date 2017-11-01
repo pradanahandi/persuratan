@@ -3,9 +3,9 @@
 	if(isset($_SESSION['level']))
 	{
 		session_destroy();
-		header('Location:../index.php');
+		header('Location:../index');
 	}else{
 		session_destroy();
-		header('Location:../index.php');
+		header('Location:../index');
 	}
 ?>

@@ -5,25 +5,25 @@
 		<a href="javascript:void(0);" id="show-shortcut" data-action="toggleShortcut">
 			<img src="../assets/img/avatars/sunny.png" alt="me" class="online" /> 
 			<span>
-				<?php echo $_SESSION['nama'];?> 
+				<?php echo $_SESSION['nama'];?><br/>
 			</span>
 			<i class="fa fa-angle-down"></i>
 		</a> 
 		
 	</span>
 </div>
-<!-- end user info -->
-
-<!-- NAVIGATION : This navigation is also responsive-->
 <?php
 	if($_SESSION['level'] == 'admin')
 	{
 ?>
 <nav>		
 	<ul>
-		<li class="active">
-			<a href="index.html" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Dashboard</span></a>
-		</li>					
+		<li>
+			<a href="index" title="Dashboard"><i class="fa fa-lg fa-home"></i><span class="menu-item-parent">Dashboard</span></a>
+		</li>
+		<!-- <li class="active">
+			<a href="index.php" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Dashboard</span></a>
+		</li> -->					
 		<li>
 			<a href="#"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">Surat Keluar</span></a>
 			<ul>
@@ -39,7 +39,7 @@
 			<a href="#"><i class="fa fa-lg fa-fw fa-table"></i> <span class="menu-item-parent">MoU</span></a>
 			<ul>
 				<li>
-					<a href="table.html">Input MoU</a>
+					<a href="?page=tambah_mou">Input MoU</a>
 				</li>				
 				<li>
 					<a href="?page=mou">View MoU</a>
@@ -50,7 +50,7 @@
 			<a href="#"><i class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span class="menu-item-parent">MoA</span></a>
 			<ul>
 				<li>
-					<a href="form-elements.html">Input MoA</a>
+					<a href="?page=tambah_moa">Input MoA</a>
 				</li>
 				<li>
 					<a href="?page=moa">View MoA</a>
@@ -78,17 +78,20 @@
 ?>
 <nav>		
 	<ul>
-		<li class="active">
-			<a href="index.html" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Dashboard</span></a>
-		</li>					
 		<li>
-			<a href="#"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">Surat Masuk</span></a>
+			<a href="index" title="Dashboard"><i class="fa fa-lg fa-home"></i><span class="menu-item-parent">Dashboard</span></a>
+		</li>
+		<!-- <li class="active">
+			<a href="index.php" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Dashboard</span></a>
+		</li> -->					
+		<li>
+			<a href="#"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">Surat Keluar</span></a>
 			<ul>
 				<li>
 					<a href="?page=tambah_surat">Input Surat</a>
 				</li>
 				<li>
-					<a href="?page=Surat">View Surat</a>
+					<a href="?page=surat">View Surat</a>
 				</li>				
 			</ul>
 		</li>
@@ -96,7 +99,7 @@
 			<a href="#"><i class="fa fa-lg fa-fw fa-table"></i> <span class="menu-item-parent">MoU</span></a>
 			<ul>
 				<li>
-					<a href="table.html">Input MoU</a>
+					<a href="?page=tambah_mou">Input MoU</a>
 				</li>				
 				<li>
 					<a href="?page=mou">View MoU</a>
@@ -107,13 +110,13 @@
 			<a href="#"><i class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span class="menu-item-parent">MoA</span></a>
 			<ul>
 				<li>
-					<a href="form-elements.html">Input MoA</a>
+					<a href="?page=tambah_moa">Input MoA</a>
 				</li>
 				<li>
 					<a href="?page=moa">View MoA</a>
 				</li>				
 			</ul>
-		</li>		
+		</li>
 	</ul>	
 </nav>
 <?php 
@@ -123,17 +126,17 @@
 ?>
 <nav>		
 	<ul>
-		<li class="active">
-			<a href="index.html" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Dashboard</span></a>
-		</li>					
 		<li>
-			<a href="#"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">Surat Masuk</span></a>
+			<a href="index" title="Dashboard"><i class="fa fa-lg fa-home"></i><span class="menu-item-parent">Dashboard</span></a>
+		</li>
+		<li>
+			<a href="#"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">Surat Keluar</span></a>
 			<ul>
 				<li>
 					<a href="?page=tambah_surat">Input Surat</a>
 				</li>
 				<li>
-					<a href="?page=Surat">View Surat</a>
+					<a href="?page=surat">View Surat</a>
 				</li>				
 			</ul>
 		</li>
@@ -141,7 +144,7 @@
 			<a href="#"><i class="fa fa-lg fa-fw fa-table"></i> <span class="menu-item-parent">MoU</span></a>
 			<ul>
 				<li>
-					<a href="table.html">Input MoU</a>
+					<a href="?page=tambah_mou">Input MoU</a>
 				</li>				
 				<li>
 					<a href="?page=mou">View MoU</a>
@@ -152,16 +155,55 @@
 			<a href="#"><i class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span class="menu-item-parent">MoA</span></a>
 			<ul>
 				<li>
-					<a href="form-elements.html">Input MoA</a>
+					<a href="?page=tambah_moa">Input MoA</a>
 				</li>
 				<li>
 					<a href="?page=moa">View MoA</a>
 				</li>				
 			</ul>
-		</li>		
+		</li>
 	</ul>	
 </nav>
 <?php } ?>
+<?php
+	if($_SESSION['level'] == 'compart')
+	{
+?>
+ 	<?php echo $$_SESSION['level'];?>
+<!-- <nav>		
+	<ul>
+		<li>
+			<a href="index" title="Dashboard"><i class="fa fa-lg fa-home"></i><span class="menu-item-parent">Dashboard</span></a>
+		</li>		
+		<li>
+			<a href="#"><i class="fa fa-lg fa-fw fa-table"></i> <span class="menu-item-parent">MoU</span></a>
+			<ul>
+				<li>
+					<a href="?page=tambah_mou">Input MoU</a>
+				</li>				
+				<li>
+					<a href="?page=mou">View MoU</a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="#"><i class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span class="menu-item-parent">MoA</span></a>
+			<ul>
+				<li>
+					<a href="?page=tambah_moa">Input MoA</a>
+				</li>
+				<li>
+					<a href="?page=moa">View MoA</a>
+				</li>				
+			</ul>
+		</li>
+	</ul>	
+</nav> -->
+<?php 
+	}	
+?>
+
+
 <span class="minifyme" data-action="minifyMenu"> 
 	<i class="fa fa-arrow-circle-left hit"></i> 
 </span>

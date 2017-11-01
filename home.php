@@ -26,7 +26,7 @@
                     $_SESSION['level'] = $row['level'];                        
                     echo '<script language="javascript">
                           window.alert("Login Berhasil");                  
-                          window.location.href="apps/index.php";
+                          window.location.href="apps/index";
                         </script>';
                 }
                 if($level == 'sekretaris');
@@ -38,9 +38,33 @@
                     $_SESSION['level'] = $row['level'];                        
                     echo '<script language="javascript">
                           window.alert("Login Berhasil");                  
-                          window.location.href="apps/index.php";
+                          window.location.href="apps/index";
                         </script>';
-                }         
+                }     
+                if($level == 'magang');
+                {
+                    $_SESSION['id_user'] = $row['id_user'];
+                    $_SESSION['username'] = $row['username'];
+                    $_SESSION['email'] = $row['email'];
+                    $_SESSION['nama'] = $row['nama'];
+                    $_SESSION['level'] = $row['level'];                        
+                    echo '<script language="javascript">
+                          window.alert("Login Berhasil");                  
+                          window.location.href="apps/index";
+                        </script>';
+                } 
+                if($level == 'compart');
+                {
+                    $_SESSION['id_user'] = $row['id_user'];
+                    $_SESSION['username'] = $row['username'];
+                    $_SESSION['email'] = $row['email'];
+                    $_SESSION['nama'] = $row['nama'];
+                    $_SESSION['level'] = $row['level'];                        
+                    echo '<script language="javascript">
+                          window.alert("Login Berhasil");                  
+                          window.location.href="apps/index";
+                        </script>';
+                }      
             }
             else
             {

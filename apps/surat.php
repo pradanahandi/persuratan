@@ -28,20 +28,20 @@
 							</thead>							
 							<tbody>	
 								<?php
-									$id = 1;
+									$No = 1;
 									include '../config/koneksi.php';
-									$query = $conn->query("SELECT * FROM t_surat_keluar_new INNER JOIN t_user on t_surat_keluar_new.id_user=t_user.id WHERE level='admin'");
+									$query = $conn->query("SELECT * FROM t_surat_keluar INNER JOIN t_user on t_surat_keluar.id_user=t_user.id_user ORDER BY t_surat_keluar.id");
 									while ($row = $query->fetch_assoc()) {
 								?>							
 								<tr>
-									<td><?php echo $id++;?></td>
+									<td><?php echo $No++;?></td>
 									<td><?php echo $row['tanggal_surat'];?></td>
 									<td><?php echo $row['nosurat'];?></td>
 									<td><?php echo $row['untuk'];?></td>
 									<td><?php echo $row['perihal'];?></td>
 									<td><?php echo $row['asal_surat'];?></td>
 									<td><?php echo $row['keterangan'];?></td>
-									<td><?php echo $row['file'];?></td>
+									<td><a href="../assets/doc/<?php echo $row['file'];?>"><?php echo $row['file'];?></a></td>
 									<td><?php echo $row['nama'];?></td>
 									<td><?php echo $row['tanggal_post'];?></td>
 									<td style="text-align: center;"><a href="?page=edit_surat&id=<?php echo $row['id'];?>"><img width="20px" src="../assets/img/icon/edit.png"></a><span><a id="hapus" href="?page=delete_surat&id=<?php echo $row['id'];?>"><img width="20px" src="../assets/img/icon/delete.png"></span></td>

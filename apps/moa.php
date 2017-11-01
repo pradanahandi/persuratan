@@ -1,144 +1,56 @@
-<!-- widget grid -->
 <section id="widget-grid" class="">
-	<!-- row -->
-	<div class="row">
-		<!-- NEW WIDGET START -->
-		<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-
-			<!-- Widget ID (each widget will need unique ID)-->
+	<div class="row">		
+		<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">			
 			<div class="jarviswidget jarviswidget-color-darken" id="wid-id-0" data-widget-editbutton="false">				
 				<header>
 					<span class="widget-icon"> <i class="fa fa-table"></i> </span>
-					<h2>Data Surat </h2>
-
+					<h2>Data MoU </h2>
 				</header>
-
-				<!-- widget div-->
-				<div>
-
-					<!-- widget edit box -->
+				<div>					
 					<div class="jarviswidget-editbox">
-						<!-- This area used as dropdown edit box -->
-
-					</div>
-					<!-- end widget edit box -->
-
-					<!-- widget content -->
+					</div>					
 					<div class="widget-body no-padding">
-
 						<table id="dt_basic" class="table table-striped table-bordered table-hover" width="100%">
 							<thead>			                
 								<tr>
-									<th data-hide="phone">ID</th>
-									<th data-class="expand"><i class="fa fa-fw fa-user text-muted hidden-md hidden-sm hidden-xs"></i> Name</th>
-									<th data-hide="phone"><i class="fa fa-fw fa-phone text-muted hidden-md hidden-sm hidden-xs"></i> Phone</th>
-									<th>Company</th>
-									<th data-hide="phone,tablet"><i class="fa fa-fw fa-map-marker txt-color-blue hidden-md hidden-sm hidden-xs"></i> Zip</th>
-									<th data-hide="phone,tablet">City</th>
-									<th data-hide="phone,tablet"><i class="fa fa-fw fa-calendar txt-color-blue hidden-md hidden-sm hidden-xs"></i> Date</th>
+									<th>ID</th>
+									<th>Tanggal MoU</th>
+									<th>No MoU</th>
+									<th>Nama Partner</th>
+									<th>Perihal</th>
+									<th>Keterangan</th>
+									<th>File MoU</th>
+									<th>Oleh</th>
+									<th>Tanggal Post</th>
+									<th>Aksi</th>
 								</tr>
-							</thead>
-							<tbody>
+							</thead>							
+							<tbody>	
+								<?php
+									$No = 1;
+									include '../config/koneksi.php';
+									$query = $conn->query("SELECT * FROM t_moa INNER JOIN t_user on t_moa.id_user=t_user.id_user ORDER BY t_moa.id");
+									while ($row = $query->fetch_assoc()) {
+								?>							
 								<tr>
-									<td>1</td>
-									<td>Jennifer</td>
-									<td>1-342-463-8341</td>
-									<td>Et Rutrum Non Associates</td>
-									<td>35728</td>
-									<td>Fogo</td>
-									<td>03/04/14</td>
+									<td><?php echo $No++;?></td>
+									<td><?php echo $row['tanggal_moa'];?></td>
+									<td><?php echo $row['nomoa'];?></td>
+									<td><?php echo $row['nama_partner'];?></td>
+									<td><?php echo $row['perihal'];?></td>
+									<td><?php echo $row['keterangan'];?></td>
+									<td><?php echo $row['file'];?></td>
+									<td><a href="../assets/doc/moa/<?php echo $row['file'];?>"><?php echo $row['file'];?></a></td>
+									<td><?php echo $row['nama'];?></td>
+									<td><?php echo $row['tanggal_post'];?></td>
+									<td style="text-align: center;"><a href="?page=edit_moa&id=<?php echo $row['id'];?>"><img width="20px" src="../assets/img/icon/edit.png"></a><span><a id="hapus" href="?page=delete_moa&id=<?php echo $row['id'];?>"><img width="20px" src="../assets/img/icon/delete.png"></span></td>
 								</tr>
-								<tr>
-									<td>2</td>
-									<td>Clark</td>
-									<td>1-516-859-1120</td>
-									<td>Nam Ac Inc.</td>
-									<td>7162</td>
-									<td>Machelen</td>
-									<td>03/23/13</td>
-								</tr>
-								<tr>
-									<td>3</td>
-									<td>Brendan</td>
-									<td>1-724-406-2487</td>
-									<td>Enim Commodo Limited</td>
-									<td>98611</td>
-									<td>Norman</td>
-									<td>02/13/14</td>
-								</tr>
-								<tr>
-									<td>4</td>
-									<td>Warren</td>
-									<td>1-412-485-9725</td>
-									<td>Odio Etiam Institute</td>
-									<td>10312</td>
-									<td>Sautin</td>
-									<td>01/01/13</td>
-								</tr>
-								<tr>
-									<td>5</td>
-									<td>Rajah</td>
-									<td>1-849-642-8777</td>
-									<td>Neque Ltd</td>
-									<td>29131</td>
-									<td>Glovertown</td>
-									<td>02/16/13</td>
-								</tr>
-								<tr>
-									<td>6</td>
-									<td>Demetrius</td>
-									<td>1-470-329-9627</td>
-									<td>Euismod In Ltd</td>
-									<td>1883</td>
-									<td>Kapolei</td>
-									<td>03/15/13</td>
-								</tr>
-								<tr>
-									<td>7</td>
-									<td>Keefe</td>
-									<td>1-188-191-2346</td>
-									<td>Molestie Industries</td>
-									<td>2211BM</td>
-									<td>Modena</td>
-									<td>07/08/13</td>
-								</tr>
-								<tr>
-									<td>8</td>
-									<td>Leila</td>
-									<td>1-663-655-8904</td>
-									<td>Est LLC</td>
-									<td>75286</td>
-									<td>Hondelange</td>
-									<td>12/09/12</td>
-								</tr>
-								<tr>
-									<td>9</td>
-									<td>Fritz</td>
-									<td>1-598-234-7837</td>
-									<td>Et Ultrices Posuere Institute</td>
-									<td>2324</td>
-									<td>Monte San Pietrangeli</td>
-									<td>12/29/12</td>
-								</tr>
-								<tr>
-									<td>10</td>
-									<td>Cassady</td>
-									<td>1-212-965-8381</td>
-									<td>Vitae Erat Vel Company</td>
-									<td>5898</td>
-									<td>Huntly</td>
-									<td>10/07/13</td>
-								</tr>
+								<?php } ?>
 							</tbody>
 						</table>
-
-					</div>
-					<!-- end widget content -->
-				</div>
-				<!-- end widget div -->
-			</div>
-			<!-- end widget -->	
-		</article>
-		<!-- WIDGET END -->
+					</div>					
+				</div>				
+			</div>			
+		</article>		
 	</div>
 </section>

@@ -4,11 +4,11 @@
   	ini_set('display_startup_errors', 1);
   	error_reporting(E_ALL);
 
-  	$cek = $conn->query("SELECT IFNULL(MAX(no_s)+1,1) AS `no_s` FROM `t_surat_keluar` WHERE no_s AND DATE_FORMAT(`tanggal_post`,'%Y%m%d')=DATE_FORMAT(NOW(),'%Y%m%d')");
-  	$cek1 = $conn->query("SELECT (COUNT(*)) AS `no_s` FROM `t_surat_keluar` WHERE no_s AND DATE_FORMAT(`tanggal_post`,'%Y')=DATE_FORMAT(NOW(),'%Y')");	    	  	
+  	$cek = $conn->query("SELECT IFNULL(MAX(no_m)+1,1) AS `no_m` FROM `t_moa` WHERE no_m AND DATE_FORMAT(`tanggal_post`,'%Y%m%d')=DATE_FORMAT(NOW(),'%Y%m%d')");
+  	$cek1 = $conn->query("SELECT (COUNT(*)) AS `no_m` FROM `t_moa` WHERE no_m AND DATE_FORMAT(`tanggal_post`,'%Y')=DATE_FORMAT(NOW(),'%Y')");	    	  	
 	$result = $cek->fetch_array();
 	$result1 = $cek1->fetch_array();
-	if($x = $result['no_s'] )
+	if($x = $result['no_m'] )
 	{
 		$x = $x;
 	}	
@@ -25,21 +25,21 @@
 	$b = 'SC';
 	$c = array('','I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII');
 	$d = date('Y');
+	$e = 'MOU';
 	
-	$nosurat = sprintf('%s/%03d.%s/%s/%s/%d', $b,$x,$a,$z,$c[date('n')], $d);	
+	$nomoa = sprintf('%s/%03d.%s/%s/%s/%s/%d', $b,$x,$a,$z,$e,$c[date('n')], $d);	
 
 	if(isset($_POST['simpan']))
-	{	
+	{	$path = '../assets/doc/moa/';
 		$ekstensi = array('jpg','jpeg','png','JPG','PNG','JPEG','pdf','PDF');
     	$maxsize = 104407000;
     	$id_user = $conn->real_escape_string(htmlentities(htmlspecialchars($_POST['id_user'], ENT_QUOTES)));
-    	$tanggal_surat = $conn->real_escape_string(strtotime($_POST['tanggal_surat']));
-    	$tanggal_surat = date("Y-m-d", $tanggal_surat);
-    	$no_s = $conn->real_escape_string(htmlentities(htmlspecialchars($_POST['no_s'], ENT_QUOTES)));
-    	$nosurat = $conn->real_escape_string(htmlentities(htmlspecialchars($_POST['nosurat'], ENT_QUOTES)));
-    	$untuk = $conn->real_escape_string(htmlentities(htmlspecialchars($_POST['untuk'], ENT_QUOTES)));
-    	$perihal = $conn->real_escape_string(htmlentities(htmlspecialchars($_POST['perihal'], ENT_QUOTES)));
-    	$asal_surat = $conn->real_escape_string(htmlentities(htmlspecialchars($_POST['asal_surat'], ENT_QUOTES)));
+    	$tanggal_moa = $conn->real_escape_string(strtotime($_POST['tanggal_moa']));
+    	$tanggal_moa = date("Y-m-d", $tanggal_moa);
+    	$no_m = $conn->real_escape_string(htmlentities(htmlspecialchars($_POST['no_m'], ENT_QUOTES)));
+    	$nomoa = $conn->real_escape_string(htmlentities(htmlspecialchars($_POST['nomoa'], ENT_QUOTES)));
+    	$nama_partner = $conn->real_escape_string(htmlentities(htmlspecialchars($_POST['nama_partner'], ENT_QUOTES)));
+    	$perihal = $conn->real_escape_string(htmlentities(htmlspecialchars($_POST['perihal'], ENT_QUOTES)));    	
     	$keterangan = $conn->real_escape_string(htmlentities(htmlspecialchars($_POST['keterangan'], ENT_QUOTES)));
 
     	$file = $conn->real_escape_string($_FILES['file']['name']);
@@ -52,13 +52,19 @@
 		{
 			if($ukuran < $maxsize)
         	{
-        		move_uploaded_file($_FILES['file']['tmp_name'], '../assets/doc/'.$_FILES['file']['name']);
-        		$sql = "INSERT INTO t_surat_keluar VALUES('','$id_user','$tanggal_surat','$no_s','$nosurat','$untuk','$perihal','$asal_surat','$keterangan','$file','$tanggal_post')";
+        		move_uploaded_file($_FILES['file']['tmp_name'], $path.$file);
+        		$sql = "INSERT INTO t_moa VALUES('','$id_user','$tanggal_moa','$no_m','$nomoa','$nama_partner','$perihal','$keterangan','$file','$tanggal_post')";
         		$query = $conn->query($sql) or die($conn->error);
         		if($query)
         		{
         			print_r('<script>alert("Data Berhasil di Input!");
-                                 window.location.href="?page=surat";
+                                 window.location.href="?page=moa";
+                          </script>');
+        		}
+        		else
+        		{
+        			print_r('<script>alert("Data Gagal di Input!");
+                                 window.location.href="?page=moa";
                           </script>');
         		}
         	}        	
@@ -71,7 +77,7 @@
 			<div class="jarviswidget" id="wid-id-4" data-widget-editbutton="false" data-widget-custombutton="false">	
 				<header>
 					<span class="widget-icon"> <i class="fa fa-edit"></i> </span>
-					<h2>Management Surat Keluar </h2>					
+					<h2>Management MoA </h2>					
 				</header>
 				<div>
 					<div class="jarviswidget-editbox">
@@ -79,57 +85,52 @@
 					<div class="widget-body no-padding">
 						<form id="smart-form-register" class="smart-form" action="" method="POST" enctype="multipart/form-data">
 							<header>
-								Tambah Surat Keluar
+								Tambah MoA
 							</header>							
 							<fieldset>
 								<section>
 									<label class="input"> <i class="icon-append fa fa-calendar"></i>
-										<input type="text" name="tanggal_surat" placeholder="Tanggal Surat" id="datepicker" class="datepicker" autocomplete="Off">
-										<b class="tooltip tooltip-bottom-right">Masukan Tanggal Surat</b> </label>
+										<input type="text" name="tanggal_moa" placeholder="Tanggal MoA" id="datepicker" class="datepicker" autocomplete="Off">
+										<b class="tooltip tooltip-bottom-right">Masukan Tanggal MoU</b> </label>
 								</section>
 								<section hidden="">
 									<label class="input"> <i class="icon-append fa fa-envelope-o"></i>
-										<input readonly="" type="text" name="no_s" placeholder="No Surat" value="<?php echo $x;?>">
-										<b class="tooltip tooltip-bottom-right">Masukan No Surat</b> </label>
+										<input readonly="" type="text" name="no_m" placeholder="No Surat" value="<?php echo $x;?>">
+										<b class="tooltip tooltip-bottom-right">Masukan No MoU</b> </label>
 								</section>
 								<section>
 									<label class="input"> <i class="icon-append fa fa-envelope-o"></i>
-										<input type="text" name="nosurat" placeholder="No Surat" value="<?php echo $nosurat;?>">
-										<b class="tooltip tooltip-bottom-right">Masukan No Surat</b> </label>
-								</section>
-
-								<section>
-									<label class="input"> <i class="icon-append fa fa-envelope-o"></i>
-										<input type="text" name="untuk" placeholder="Ditujukan untuk">
-										<b class="tooltip tooltip-bottom-right">Ditujukan untuk</b> </label>
+										<input type="text" name="nomoa" placeholder="No Surat" value="<?php echo $nomoa;?>">
+										<b class="tooltip tooltip-bottom-right">Masukan No MoU</b> </label>
 								</section>
 
 								<section>
 									<label class="input"> <i class="icon-append fa fa-envelope-o"></i>
-										<input type="text" name="perihal" placeholder="Perihal Surat">
-										<b class="tooltip tooltip-bottom-right">Perihal Surat</b> </label>
+										<input type="text" name="nama_partner" placeholder="Nama Partner">
+										<b class="tooltip tooltip-bottom-right">Nama Partner</b> </label>
+								</section>
+
+								<section>
+									<label class="input"> <i class="icon-append fa fa-envelope-o"></i>
+										<input type="text" name="perihal" placeholder="Perihal">
+										<b class="tooltip tooltip-bottom-right">Perihal</b> </label>
 								</section>								
 
 								<section>
 									<label class="input"> <i class="icon-append fa fa-envelope-o"></i>
-										<input type="text" name="asal_surat" placeholder="Asal Surat">
-										<b class="tooltip tooltip-bottom-right">Asal Surat</b> </label>
+										<input type="text" name="keterangan" placeholder="Keterangan">
+										<b class="tooltip tooltip-bottom-right">Keterangan</b> </label>
 								</section>
-
-								<section>
-									<label class="input"> <i class="icon-append fa fa-lock"></i>
-										<input type="text" name="keterangan" placeholder="Keterangan" id="keterangan">
-										<b class="tooltip tooltip-bottom-right">Untuk keterangan</b> </label>
-								</section>								
+											
 							</fieldset>
 							<fieldset>
-								<legend>File Surat</legend>						
+								<legend>File MoU</legend>						
 								<div class="form-group">
-									<label class="col-md-2 control-label">File Surat</label>
+									<label class="col-md-2 control-label">File MoU</label>
 									<div class="col-md-10">
 										<input type="file" name="file" class="btn btn-default form control" id="exampleInputFile1">
 										<p class="help-block">
-											some help text here.
+											Dalam bentuk PDF
 										</p>
 									</div>
 								</div>
@@ -150,7 +151,7 @@
 								</section>								
 							</fieldset>
 							<footer>
-								<input type="submit" name="simpan" class="btn btn-primary" value="Tambah Surat">
+								<input type="submit" name="simpan" class="btn btn-primary" value="Tambah MoA">
 							</footer>
 						</form>					
 					</div>							

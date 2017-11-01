@@ -1,5 +1,8 @@
 <?php 
 	session_start();
+	ini_set('display_errors', 1);
+  	ini_set('display_startup_errors', 1);
+  	error_reporting(E_ALL);
 	if(!$_SESSION['username'])
     {
         header("Location:../index.php");
@@ -76,10 +79,32 @@
 					<span> <a href="logout.php" title="Sign Out" data-action="userLogout" data-logout-msg="Apakah yakin akan keluar?"><i class="fa fa-sign-out"></i></a> </span>
 				</div>				
 			</div>			
-		</header>		
+		</header>
+		<?php
+			if($_SESSION['level'] == 'admin'){
+		?>
 		<aside id="left-panel">
 			<?php include 'menu.php';?>			
 		</aside>				
+		<?php } ?>
+		<?php
+			if($_SESSION['level'] == 'sekretaris')
+			{
+		?>
+		<aside id="left-panel">
+			<?php include 'menu.php';?>			
+		</aside>				
+		<?php } ?> 
+
+		<?php
+			if($_SESSION['level'] == 'magang')
+			{
+		?>
+		<aside id="left-panel" style="background: white;">
+			<?php include 'menu.php';?>			
+		</aside>				
+		<?php } ?> 
+		
 		<div id="main" role="main">
 
 			<!-- RIBBON -->
@@ -153,8 +178,6 @@
 		<script src="../assets/js/plugin/datatables/dataTables.tableTools.min.js"></script>
 		<script src="../assets/js/plugin/datatables/dataTables.bootstrap.min.js"></script>
 		<script src="../assets/js/plugin/datatable-responsive/datatables.responsive.min.js"></script>
-
-
 
 		<!-- JARVIS WIDGETS -->
 		<script src="../assets/js/smartwidgets/jarvis.widget.min.js"></script>

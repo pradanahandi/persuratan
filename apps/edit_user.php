@@ -1,8 +1,8 @@
 <?php
 	include '../config/koneksi.php';
 
-	$ids = $conn->real_escape_string(htmlentities(htmlspecialchars($_GET['id'], ENT_QUOTES)));
-	$result = $conn->query("SELECT * FROM t_user WHERE id='$ids'");
+	$ids = $conn->real_escape_string(htmlentities(htmlspecialchars($_GET['id_user'], ENT_QUOTES)));
+	$result = $conn->query("SELECT * FROM t_user WHERE id_user='$ids'");
 	$row = $result->fetch_assoc();
 
 	if(isset($_POST['simpan']))
@@ -10,14 +10,14 @@
 		$options = [
 	      'cost' => 12,
 	    ];
-	    $id = $conn->real_escape_string(htmlentities(htmlspecialchars($_POST['id'],ENT_QUOTES)));
+	    $id_user = $conn->real_escape_string(htmlentities(htmlspecialchars($_POST['id_user'],ENT_QUOTES)));
 	    $username = $conn->real_escape_string(htmlentities(htmlspecialchars($_POST['username'], ENT_QUOTES)));
 	    $email = $conn->real_escape_string(htmlentities(htmlspecialchars($_POST['email'], ENT_QUOTES)));
 	    $password = $conn->real_escape_string(htmlentities(htmlspecialchars(password_hash($_POST['password'], PASSWORD_BCRYPT, $options))));
 	    $nama = $conn->real_escape_string(htmlentities(htmlspecialchars($_POST['nama'], ENT_QUOTES)));
 	    $level = $conn->real_escape_string(htmlentities(htmlspecialchars($_POST['level'], ENT_QUOTES)));
 	    
-	    $query = $conn->query("UPDATE t_user set username='$username', email='$email', password='$password', level='$level' WHERE id='$id'");
+	    $query = $conn->query("UPDATE t_user set username='$username', email='$email', password='$password', level='$level' WHERE id_user='$id_user'");
 	    if(!$query)
 	    {
 	    	echo '<script>alert("Data Gagal di Input!");';
@@ -49,7 +49,7 @@
 							<fieldset>
 								<section hidden="">
 									<label class="input" > <i class="icon-append fa fa-user"></i>
-										<input type="text" hidden="" name="id" value="<?php echo $row['id'];?>">										
+										<input type="text" hidden="" name="id_user" value="<?php echo $row['id_user'];?>">										
 									</label>
 								</section>
 								<section>
@@ -97,6 +97,11 @@
 															echo "selected";
 
 													}?> value="magang">Magang</option>
+												<option <?php if($row['level'] =='compart' )
+														{
+															echo "selected";
+
+													}?> value="compart">Compart</option>
 											</select> <i></i> </label>
 									</section>	
 								</div>

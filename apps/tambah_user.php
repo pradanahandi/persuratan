@@ -11,7 +11,7 @@
 	    $nama = $conn->real_escape_string(htmlentities(htmlspecialchars($_POST['nama'], ENT_QUOTES)));
 	    $level = $conn->real_escape_string(htmlentities(htmlspecialchars($_POST['level'], ENT_QUOTES)));
 	    
-	    $cek = $conn->query("SELECT * FROM t_user WHERE username='$username' and email='$email' ORDER BY id");
+	    $cek = $conn->query("SELECT * FROM t_user WHERE username='$username' and email='$email' ORDER BY id_user");
 	    if($cek->num_rows > 0)
 	    {
 	    	print_r('<script>alert("Username dan Email sudah terdaftar");</script>');
@@ -74,6 +74,7 @@
 												<option value="admin">Administrator</option>
 												<option value="sekretaris">Sekretaris</option>
 												<option value="magang">Magang</option>
+												<option value="compart">Compart</option>			
 											</select> <i></i> </label>
 									</section>	
 								</div>

@@ -36,7 +36,7 @@
 							<?php
 								include '../config/koneksi.php';
 								$id = 1;
-								$query = $conn->query("SELECT * FROM t_user ORDER BY id");
+								$query = $conn->query("SELECT * FROM t_user ORDER BY id_user");
 								while ($row = $query->fetch_assoc()) {
 							?>
 							<tbody>
@@ -47,7 +47,7 @@
 									<td><?php echo $row['password'];?></td>
 									<td><?php echo $row['nama'];?></td>
 									<td><?php echo $row['level'];?></td>
-									<td style="text-align: center;"><a href="?page=edit_user&id=<?php echo $row['id'];?>"><img width="20px" src="../assets/img/icon/edit.png"></a><span><a id="hapus" href="?page=delete_user&id=<?php echo $row['id'];?>"><img width="20px" src="../assets/img/icon/delete.png"></span></td>
+									<td style="text-align: center;"><a href="?page=edit_user&id_user=<?php echo $row['id_user'];?>"><img width="20px" src="../assets/img/icon/edit.png"></a><span><a id="hapus" href="?page=delete_user&id_user=<?php echo $row['id_user'];?>"><img width="20px" src="../assets/img/icon/delete.png"></span></td>
 								</tr>								
 							</tbody>
 							<?php } ?>
