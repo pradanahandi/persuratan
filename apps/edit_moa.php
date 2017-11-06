@@ -158,6 +158,7 @@
 							</fieldset>
 							<footer>
 								<input type="submit" name="simpan" class="btn btn-primary" value="Edit MoU">
+								<input type="button" name="cancel" class="btn btn-primary" value="Cancel" onclick="window.location='?page=moa'">
 							</footer>
 						</form>					
 					</div>							

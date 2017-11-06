@@ -19,7 +19,7 @@
             {                    
                 if($level == 'admin');
                 {
-                    $_SESSION['id'] = $row['id'];
+                    $_SESSION['id_user'] = $row['id_user'];
                     $_SESSION['username'] = $row['username'];
                     $_SESSION['email'] = $row['email'];
                     $_SESSION['nama'] = $row['nama'];

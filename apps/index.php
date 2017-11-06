@@ -3,11 +3,11 @@
 	ini_set('display_errors', 1);
   	ini_set('display_startup_errors', 1);
   	error_reporting(E_ALL);
-	if(!$_SESSION['username'])
+	if(!$_SESSION['username'] && !$_SESSION['level'])
     {
         header("Location:../index.php");
     }
-    if($_SESSION['username'])
+    if($_SESSION['username'] && $_SESSION['level'])
     {    	
         $_SESSION['username'];
 ?>
@@ -79,44 +79,17 @@
 					<span> <a href="logout.php" title="Sign Out" data-action="userLogout" data-logout-msg="Apakah yakin akan keluar?"><i class="fa fa-sign-out"></i></a> </span>
 				</div>				
 			</div>			
-		</header>
-		<?php
-			if($_SESSION['level'] == 'admin'){
-		?>
+		</header>		
 		<aside id="left-panel">
 			<?php include 'menu.php';?>			
-		</aside>				
-		<?php } ?>
-		<?php
-			if($_SESSION['level'] == 'sekretaris')
-			{
-		?>
-		<aside id="left-panel">
-			<?php include 'menu.php';?>			
-		</aside>				
-		<?php } ?> 
-
-		<?php
-			if($_SESSION['level'] == 'magang')
-			{
-		?>
-		<aside id="left-panel" style="background: white;">
-			<?php include 'menu.php';?>			
-		</aside>				
-		<?php } ?> 
-		
-		<div id="main" role="main">
-
-			<!-- RIBBON -->
-			<div id="ribbon">
-				<!-- breadcrumb -->
+		</aside>						
+		<div id="main" role="main">			
+			<div id="ribbon">				
 				<ol class="breadcrumb">
 					<li>Home</li><li>Dashboard</li>
 				</ol>				
 
-			</div>
-			<!-- END RIBBON -->
-
+			</div>			
 			<!-- MAIN CONTENT -->
 			<div id="content">
 				<?php 
@@ -133,10 +106,8 @@
 			</div>
 			<!-- END MAIN CONTENT -->
 
-		</div>
-		<!-- END MAIN PANEL -->
-
-		<!-- PAGE FOOTER -->
+		</div>		
+		
 		<div class="page-footer">
 			<?php include 'footer.php';?>
 		</div>

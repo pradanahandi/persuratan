@@ -73,14 +73,15 @@
 												<option value="0" selected="" disabled="">Level</option>
 												<option value="admin">Administrator</option>
 												<option value="sekretaris">Sekretaris</option>
-												<option value="magang">Magang</option>
+												<option value="magang">Magang</option>	
 												<option value="compart">Compart</option>			
 											</select> <i></i> </label>
 									</section>	
 								</div>
 							</fieldset>
 							<footer>
-								<input type="submit" name="simpan" class="btn btn-primary" value="Tambah User">								
+								<input type="submit" name="simpan" class="btn btn-primary" value="Tambah User">		
+								<input type="button" name="cancel" class="btn btn-primary" value="Cancel" onclick="window.location='?page=user'">
 							</footer>
 						</form>					
 					</div>

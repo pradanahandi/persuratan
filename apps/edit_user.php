@@ -28,7 +28,7 @@
 			                window.location.href="?page=user";
 			      </script>';
 	    }
-	}
+	}	
 ?>
 <section id="widget-grid" class="">
 	<div class="row">		
@@ -108,6 +108,7 @@
 							</fieldset>
 							<footer>
 								<input type="submit" name="simpan" class="btn btn-primary" value="Tambah User">								
+								<input type="button" name="cancel" class="btn btn-primary" value="Cancel" onclick="window.location='?page=user'">
 							</footer>
 						</form>					
 					</div>

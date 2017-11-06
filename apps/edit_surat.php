@@ -159,6 +159,7 @@
 							</fieldset>
 							<footer>
 								<input type="submit" name="simpan" class="btn btn-primary" value="Update Surat">
+								<input type="button" name="cancel" class="btn btn-primary" value="Cancel" onclick="window.location='?page=surat'">
 							</footer>
 						</form>					
 					</div>							
