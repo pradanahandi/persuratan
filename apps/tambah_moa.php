@@ -25,7 +25,7 @@
 	$b = 'SC';
 	$c = array('','I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII');
 	$d = date('Y');
-	$e = 'MOU';
+	$e = 'MOA';
 	
 	$nomoa = sprintf('%s/%03d.%s/%s/%s/%s/%d', $b,$x,$a,$z,$e,$c[date('n')], $d);	
 
@@ -147,7 +147,7 @@
 								<legend hidden="">ID</legend>						
 								<section hidden="">
 									<label class="input"> <i class="icon-append fa fa-users"></i>
-									<input type="text" name="id_user" readonly="" value="<?php echo $_SESSION['id'];?>">										
+									<input type="text" name="id_user" readonly="" value="<?php echo $_SESSION['id_user'];?>">										
 								</section>								
 							</fieldset>
 							<footer>

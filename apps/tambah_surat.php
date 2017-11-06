@@ -54,13 +54,11 @@
         	{
         		move_uploaded_file($_FILES['file']['tmp_name'], '../assets/doc/'.$_FILES['file']['name']);
         		$sql = "INSERT INTO t_surat_keluar VALUES('','$id_user','$tanggal_surat','$no_s','$nosurat','$untuk','$perihal','$asal_surat','$keterangan','$file','$tanggal_post')";
+        		// print_r($sql);
         		$query = $conn->query($sql) or die($conn->error);
-        		if($query)
-        		{
-        			print_r('<script>alert("Data Berhasil di Input!");
+        		print_r('<script>alert("Data Berhasil di Input!");
                                  window.location.href="?page=surat";
-                          </script>');
-        		}
+                          </script>');        		
         	}        	
 		}
 	}
@@ -146,7 +144,7 @@
 								<legend hidden="">ID</legend>						
 								<section hidden="">
 									<label class="input"> <i class="icon-append fa fa-users"></i>
-									<input type="text" name="id_user" readonly="" value="<?php echo $_SESSION['id'];?>">										
+									<input type="text" name="id_user" readonly="" value="<?php echo $_SESSION['id_user'];?>">										
 								</section>								
 							</fieldset>
 							<footer>

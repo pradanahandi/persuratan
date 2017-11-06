@@ -153,11 +153,11 @@
 								<legend hidden="">ID</legend>						
 								<section hidden="">
 									<label class="input"> <i class="icon-append fa fa-users"></i>
-									<input type="text" name="id_user" readonly="" value="<?php echo $_SESSION['id'];?>">										
+									<input type="text" name="id_user" readonly="" value="<?php echo $_SESSION['id_user'];?>">										
 								</section>								
 							</fieldset>
 							<footer>
-								<input type="submit" name="simpan" class="btn btn-primary" value="Edit MoU">
+								<input type="submit" name="simpan" class="btn btn-primary" value="Edit MoA">
 								<input type="button" name="cancel" class="btn btn-primary" value="Cancel" onclick="window.location='?page=moa'">
 							</footer>
 						</form>					

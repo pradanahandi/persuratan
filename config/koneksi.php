@@ -4,7 +4,7 @@
 	$host = "localhost";
 	$user = "root";
 	$pass = "";
-	$db = "persuratan";
+	$db = "surat";
 
 	$conn = mysqli_connect($host,$user,$pass,$db);
 	if(!$conn)
