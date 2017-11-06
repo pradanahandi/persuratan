@@ -13,25 +13,25 @@
 		{
 	?>
 	<div class="row">
-		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
 			<div class="sparks-info">
 				<h5> Total Surat Masuk <br/><span class="txt-color-blue"><?php viewSurat();?></span></h5>
 			</div>			
 		</div>		
 
-		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
 			<div class="sparks-info">
 				<h5> Total MoU <br/><span class="txt-color-blue"><?php viewMoU();?></span></h5>
 			</div>			
 		</div>
 
-		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
 			<div class="sparks-info">
 				<h5> Total MoA <br/><span class="txt-color-blue"><?php viewMoA();?></span></h5>
 			</div>			
 		</div>
 
-		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
 			<div class="sparks-info">
 				<h5> Total User <br/><span class="txt-color-blue"><?php viewUser();?></span></h5>
 			</div>			

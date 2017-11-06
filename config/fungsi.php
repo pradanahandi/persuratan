@@ -31,7 +31,7 @@
 	{
 		global $conn;
 
-		$query = $conn->query("SELECT COUNT(*) FROM t_userw ORDER BY id");
+		$query = $conn->query("SELECT COUNT(*) FROM t_user ORDER BY id_user");
 		$row = $query->fetch_array();
 		echo $row[0];
 	}

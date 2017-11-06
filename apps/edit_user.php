@@ -100,7 +100,6 @@
 												<option <?php if($row['level'] =='compart' )
 														{
 															echo "selected";
-
 													}?> value="compart">Compart</option>
 											</select> <i></i> </label>
 									</section>	

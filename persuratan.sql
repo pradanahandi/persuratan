@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 01, 2017 at 11:09 AM
+-- Generation Time: Nov 06, 2017 at 04:32 AM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -103,7 +103,7 @@ INSERT INTO `t_user` (`id_user`, `username`, `email`, `password`, `nama`, `level
 (3, 'firda', 'firdanuristianah@gmail.com', '$2y$12$xUF/z2ywrquqto3rM1su/uptAFWN6PrVLm9LN4tsu3TEHBKMJLlpq', 'Firda Nuristianah', 'magang'),
 (4, 'novel', 'novelmeilanie@seamolec.org', '$2y$12$GGfnx1aoxlkXa2OFzJEvkuhEm06NFoVMJVVgmiH9vps2sX0G.KRWK', 'Novel Meilanie', 'sekretaris'),
 (5, 'agun', 'agun@seamolec.org', '$2y$12$UZId1WbPOXpvNwHQxia3u.kQoya4pEGRoYS7fW.kFBz8XnpKRQKIe', 'Agun Gunawan', 'sekretaris'),
-(6, 'yoanda', 'yoanda@seamolec.org', '$2y$12$ExrBPMwj2p4iZZXY8yiyLuxNgq9K8GDCR6pV.yJ1f88muTp.a6t7i', 'Yoanda Adana', 'compart');
+(6, 'yoanda', 'yoanda@seamolec.org', '$2y$12$iQXKvuIbuzU9qHnPDW7ye.zQBzAChaVxJLj9gI/5hVP86Q.0C5Fia', 'Yoanda Adana', 'compart');
 
 --
 -- Indexes for dumped tables

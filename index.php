@@ -58,11 +58,6 @@
 	
 	<body class="animated fadeInDown">
 		<header id="header" style="background: #fff!important;">
-
-			<!-- <div id="logo-group">
-				<span id="logo"></span>
-			</div>			 -->
-
 		</header>
 		<div id="main" role="main">
 
