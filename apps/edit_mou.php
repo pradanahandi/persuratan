@@ -15,7 +15,7 @@
     	$maxsize = 104407000;
     	$id_user = $conn->real_escape_string(htmlentities(htmlspecialchars($_POST['id_user'], ENT_QUOTES)));
     	$tanggal_mou = $conn->real_escape_string(strtotime($_POST['tanggal_mou']));
-    	$tanggal_mou = date("Y-m-d", $tanggal_mou);
+    	$tanggal_mou = date("Y-m-d", $tanggal_mou);    	
     	$no_m = $conn->real_escape_string(htmlentities(htmlspecialchars($_POST['no_m'], ENT_QUOTES)));
     	$nomou = $conn->real_escape_string(htmlentities(htmlspecialchars($_POST['nomou'], ENT_QUOTES)));
     	$nama_partner = $conn->real_escape_string(htmlentities(htmlspecialchars($_POST['nama_partner'], ENT_QUOTES)));
@@ -92,11 +92,12 @@
 									<label class="input"> <i class="icon-append fa fa-calendar"></i>
 										<input type="text" name="tanggal_mou" placeholder="Tanggal MoU" id="datepicker" class="datepicker" autocomplete="Off" value="<?php echo $row['tanggal_mou'];?>">
 										<b class="tooltip tooltip-bottom-right">Masukan Tanggal MoU</b> </label>
-								</section>
-								<section hidden="">
+								</section>								
+
+								<section>
 									<label class="input"> <i class="icon-append fa fa-envelope-o"></i>
-										<input readonly="" type="text" name="no_m" placeholder="No Surat" value="<?php echo $row['no_m'];?>">
-										<b class="tooltip tooltip-bottom-right">Masukan No MoU</b> </label>
+										<input type="text" name="no_m" placeholder="No Urut MoU" value="<?php echo $row['no_m'];?>">
+										<b class="tooltip tooltip-bottom-right">No Urut MoU</b> </label>
 								</section>
 								<section>
 									<label class="input"> <i class="icon-append fa fa-envelope-o"></i>

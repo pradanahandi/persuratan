@@ -27,7 +27,7 @@
 	$d = date('Y');
 	$e = 'MOU';
 	
-	$nomou = sprintf('%s/%03d.%s/%s/%s/%s/%d', $b,$x,$a,$z,$e,$c[date('n')], $d);	
+	$nomou = sprintf('%s.%03d.%s/%s/%s/%s/%d', $b,$x,$a,$z,$e,$c[date('n')], $d);	
 
 	if(isset($_POST['simpan']))
 	{	$path = '../assets/doc/mou/';
@@ -86,11 +86,12 @@
 									<label class="input"> <i class="icon-append fa fa-calendar"></i>
 										<input type="text" name="tanggal_mou" placeholder="Tanggal MoU" id="datepicker" class="datepicker" autocomplete="Off">
 										<b class="tooltip tooltip-bottom-right">Masukan Tanggal MoU</b> </label>
-								</section>
+								</section>								
+
 								<section hidden="">
 									<label class="input"> <i class="icon-append fa fa-envelope-o"></i>
-										<input readonly="" type="text" name="no_m" placeholder="No Surat" value="<?php echo $x;?>">
-										<b class="tooltip tooltip-bottom-right">Masukan No MoU</b> </label>
+										<input type="text" name="no_m" placeholder="No Urut Surat" value="<?php echo $x;?>">
+										<b class="tooltip tooltip-bottom-right">No Urut MoU</b> </label>
 								</section>
 								<section>
 									<label class="input"> <i class="icon-append fa fa-envelope-o"></i>

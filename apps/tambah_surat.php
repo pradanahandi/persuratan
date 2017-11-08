@@ -26,7 +26,7 @@
 	$c = array('','I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII');
 	$d = date('Y');
 	
-	$nosurat = sprintf('%s/%03d.%s/%s/%s/%d', $b,$x,$a,$z,$c[date('n')], $d);	
+	$nosurat = sprintf('%s.%03d.%s/%s/%s/%d', $b,$x,$a,$z,$c[date('n')], $d);	
 
 	if(isset($_POST['simpan']))
 	{	
@@ -53,8 +53,7 @@
 			if($ukuran < $maxsize)
         	{
         		move_uploaded_file($_FILES['file']['tmp_name'], '../assets/doc/'.$_FILES['file']['name']);
-        		$sql = "INSERT INTO t_surat_keluar VALUES('','$id_user','$tanggal_surat','$no_s','$nosurat','$untuk','$perihal','$asal_surat','$keterangan','$file','$tanggal_post')";
-        		// print_r($sql);
+        		$sql = "INSERT INTO t_surat_keluar VALUES('','$id_user','$tanggal_surat','$no_s','$nosurat','$untuk','$perihal','$asal_surat','$keterangan','$file','$tanggal_post')";        		
         		$query = $conn->query($sql) or die($conn->error);
         		print_r('<script>alert("Data Berhasil di Input!");
                                  window.location.href="?page=surat";
@@ -84,12 +83,14 @@
 									<label class="input"> <i class="icon-append fa fa-calendar"></i>
 										<input type="text" name="tanggal_surat" placeholder="Tanggal Surat" id="datepicker" class="datepicker" autocomplete="Off">
 										<b class="tooltip tooltip-bottom-right">Masukan Tanggal Surat</b> </label>
-								</section>
+								</section>								
+
 								<section hidden="">
 									<label class="input"> <i class="icon-append fa fa-envelope-o"></i>
-										<input readonly="" type="text" name="no_s" placeholder="No Surat" value="<?php echo $x;?>">
-										<b class="tooltip tooltip-bottom-right">Masukan No Surat</b> </label>
+										<input type="text" name="no_s" placeholder="No Surat" value="<?php echo $x;?>">
+										<b class="tooltip tooltip-bottom-right">No Urut Surat</b> </label>
 								</section>
+
 								<section>
 									<label class="input"> <i class="icon-append fa fa-envelope-o"></i>
 										<input type="text" name="nosurat" placeholder="No Surat" value="<?php echo $nosurat;?>">
