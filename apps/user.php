@@ -1,25 +1,14 @@
-<!-- widget grid -->
-<section id="widget-grid" class="">
-	<!-- row -->
-	<div class="row">
-		<!-- NEW WIDGET START -->
+<section id="widget-grid" class="">	
+	<div class="row">		
 		<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-
-			<!-- Widget ID (each widget will need unique ID)-->
 			<div class="jarviswidget jarviswidget-color-darken" id="wid-id-0" data-widget-editbutton="false">				
 				<header>
 					<span class="widget-icon"> <i class="fa fa-table"></i> </span>
 					<h2>Data User </h2>
-
-				</header>
-				<!-- widget div-->
-				<div>
-					<!-- widget edit box -->
-					<div class="jarviswidget-editbox">
-						<!-- This area used as dropdown edit box -->
-					</div>
-					<!-- end widget edit box -->
-					<!-- widget content -->
+				</header>				
+				<div>					
+					<div class="jarviswidget-editbox">						
+					</div>					
 					<div class="widget-body no-padding">
 						<table id="dt_basic" class="table table-striped table-responsive table-bordered table-hover" width="100%">
 							<thead>			                
@@ -52,13 +41,9 @@
 							</tbody>
 							<?php } ?>
 						</table>
-					</div>
-					<!-- end widget content -->
-				</div>
-				<!-- end widget div -->
-			</div>
-			<!-- end widget -->	
-		</article>
-		<!-- WIDGET END -->
+					</div>					
+				</div>				
+			</div>			
+		</article>		
 	</div>
 </section>

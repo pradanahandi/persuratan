@@ -17,7 +17,19 @@
 			<ul>
 				<li>
 					<a href="index" title="Dashboard"><i class="fa fa-lg fa-home"></i><span class="menu-item-parent">Dashboard</span></a>
-				</li>							
+				</li>		
+				<li>
+					<a href="#"><i class="fa fa-lg fa-fw fa-envelope"></i> <span class="menu-item-parent">Surat Masuk</span></a>
+					<ul>
+						<li>
+							<a href="?page=tambah_surat_masuk">Input Surat Masuk</a>
+						</li>
+						<li>
+							<a href="?page=surat_masuk">View Surat Masuk</a>
+						</li>				
+					</ul>
+				</li>
+
 				<li>
 					<a href="#"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">Surat Keluar</span></a>
 					<ul>
@@ -62,7 +74,6 @@
 						</li>				
 					</ul>
 				</li>
-
 			</ul>	
 		</nav>
 <?php 
@@ -74,7 +85,19 @@
 			<ul>
 				<li>
 					<a href="index" title="Dashboard"><i class="fa fa-lg fa-home"></i><span class="menu-item-parent">Dashboard</span></a>
-				</li>						
+				</li>
+				<li>
+					<a href="#"><i class="fa fa-lg fa-fw fa-envelope"></i> <span class="menu-item-parent">Surat Masuk</span></a>
+					<ul>
+						<li>
+							<a href="?page=tambah_surat_masuk">Input Surat Masuk</a>
+						</li>
+						<li>
+							<a href="?page=surat_masuk">View Surat Masuk</a>
+						</li>				
+					</ul>
+				</li>
+
 				<li>
 					<a href="#"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">Surat Keluar</span></a>
 					<ul>
@@ -120,6 +143,18 @@
 				<li>
 					<a href="index" title="Dashboard"><i class="fa fa-lg fa-home"></i><span class="menu-item-parent">Dashboard</span></a>
 				</li>
+				<li>
+					<a href="#"><i class="fa fa-lg fa-fw fa-envelope"></i> <span class="menu-item-parent">Surat Masuk</span></a>
+					<ul>
+						<li>
+							<a href="?page=tambah_surat_masuk">Input Surat Masuk</a>
+						</li>
+						<li>
+							<a href="?page=surat_masuk">View Surat Masuk</a>
+						</li>				
+					</ul>
+				</li>
+				
 				<li>
 					<a href="#"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">Surat Keluar</span></a>
 					<ul>

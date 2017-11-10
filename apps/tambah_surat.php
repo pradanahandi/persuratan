@@ -81,43 +81,43 @@
 							<fieldset>
 								<section>
 									<label class="input"> <i class="icon-append fa fa-calendar"></i>
-										<input type="text" name="tanggal_surat" placeholder="Tanggal Surat" id="datepicker" class="datepicker" autocomplete="Off">
+										<input required="required" type="text" name="tanggal_surat" placeholder="Tanggal Surat" id="datepicker" class="datepicker" autocomplete="Off">
 										<b class="tooltip tooltip-bottom-right">Masukan Tanggal Surat</b> </label>
 								</section>								
 
 								<section hidden="">
 									<label class="input"> <i class="icon-append fa fa-envelope-o"></i>
-										<input type="text" name="no_s" placeholder="No Surat" value="<?php echo $x;?>">
+										<input required="required" type="text" name="no_s" placeholder="No Surat" value="<?php echo $x;?>">
 										<b class="tooltip tooltip-bottom-right">No Urut Surat</b> </label>
 								</section>
 
 								<section>
 									<label class="input"> <i class="icon-append fa fa-envelope-o"></i>
-										<input type="text" name="nosurat" placeholder="No Surat" value="<?php echo $nosurat;?>">
+										<input required="required" type="text" name="nosurat" placeholder="No Surat" value="<?php echo $nosurat;?>">
 										<b class="tooltip tooltip-bottom-right">Masukan No Surat</b> </label>
 								</section>
 
 								<section>
 									<label class="input"> <i class="icon-append fa fa-envelope-o"></i>
-										<input type="text" name="untuk" placeholder="Ditujukan untuk">
+										<input required="required" type="text" name="untuk" placeholder="Ditujukan untuk">
 										<b class="tooltip tooltip-bottom-right">Ditujukan untuk</b> </label>
 								</section>
 
 								<section>
 									<label class="input"> <i class="icon-append fa fa-envelope-o"></i>
-										<input type="text" name="perihal" placeholder="Perihal Surat">
+										<input required="required" type="text" name="perihal" placeholder="Perihal Surat">
 										<b class="tooltip tooltip-bottom-right">Perihal Surat</b> </label>
 								</section>								
 
 								<section>
 									<label class="input"> <i class="icon-append fa fa-envelope-o"></i>
-										<input type="text" name="asal_surat" placeholder="Asal Surat">
+										<input required="required" type="text" name="asal_surat" placeholder="Asal Surat">
 										<b class="tooltip tooltip-bottom-right">Asal Surat</b> </label>
 								</section>
 
 								<section>
-									<label class="input"> <i class="icon-append fa fa-lock"></i>
-										<input type="text" name="keterangan" placeholder="Keterangan" id="keterangan">
+									<label required="required" class="input"> <i class="icon-append fa fa-lock"></i>
+										<input type="text" name="keterangan" placeholder="Keterangan (Optional)" id="keterangan">
 										<b class="tooltip tooltip-bottom-right">Untuk keterangan</b> </label>
 								</section>								
 							</fieldset>
@@ -126,7 +126,7 @@
 								<div class="form-group">
 									<label class="col-md-2 control-label">File Surat</label>
 									<div class="col-md-10">
-										<input type="file" name="file" class="btn btn-default form control" id="exampleInputFile1">
+										<input required="required" type="file" name="file" class="btn btn-default form control" id="exampleInputFile1">
 										<p class="help-block">
 											some help text here.
 										</p>

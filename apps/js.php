@@ -243,10 +243,12 @@
 <!--Form-->
 
 <script>
-	  $( function() {
-	    $( "#datepicker" ).datepicker();
-	  } );
-	</script>
+	$( function() {
+		$( "#datepicker" ).datepicker();
+		$( "#datepicker1" ).datepicker();
+		$( "#datepicker2" ).datepicker();
+	} );
+</script>
 <!-- <script type="text/javascript">		
 	// DO NOT REMOVE : GLOBAL FUNCTIONS!			
 	$(document).ready(function() {				
